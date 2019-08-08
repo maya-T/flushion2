@@ -3,40 +3,63 @@ import 'package:flutterfirebase/Ecommerce/homePage2.dart';
 import 'package:flutterfirebase/Ecommerce/pages/loginPage.dart';
 import 'package:flutterfirebase/Ecommerce/adminSide/admin.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterfirebase/hello/votePage.dart';
+import 'package:provider/provider.dart';
 
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
+import 'Ecommerce/pages/splash.dart';
+import 'Ecommerce/provider/userProvider.dart';
 
-void main(){
-
-
+void main() {
 //  ThemeData theme=ThemeData();
 //  print(theme.hintColor.toString());
   SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp,DeviceOrientation.portraitDown])
-      .then((_) {
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
     runApp(
-        MaterialApp(
-            theme: ThemeData(
-              unselectedWidgetColor:Color(0x8a000000),
-              primaryColor: Colors.red.shade900,
-
-            ),
-            routes: <String,WidgetBuilder>{
-              "/homePage":(BuildContext context){
-                return HomePage2();
-              },
-            },
-          debugShowCheckedModeBanner: false,
-          home: Login(),
-        )
-    );
+        ChangeNotifierProvider(
+      builder: (_) => UserProvider.initialize(),
+      child: MaterialApp(
+        theme: ThemeData(
+          unselectedWidgetColor: Color(0x8a000000),
+          primaryColor: Colors.red.shade900,
+        ),
+        routes: <String, WidgetBuilder>{
+          "/homePage": (BuildContext context) {
+            return HomePage2();
+          },
+        },
+        debugShowCheckedModeBanner: false,
+        home: ScreenController(),
+      ),
+    ));
   });
 }
 
+class ScreenController extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context);
+    switch (user.status) {
+      case Status.UNINITIALIZED:
+        return Splash();
+        break;
+      case Status.AUTHENTICATED:
+        return HomePage2();
+        break;
+      case Status.AUTHENTICATING:
+        return Login();
+        break;
+      case Status.UNAUTHENTICATED:
+        return Login();
+        break;
+      default: return Login();
+    }
+  }
+}
+
+// admin side app begin
 
 //void main(){
 ////  ThemeData theme=ThemeData();
@@ -55,9 +78,7 @@ void main(){
 //    );
 //  });
 //}
-//
-
-
+//admin side end
 
 //void main() {
 //  runApp(MyApp());

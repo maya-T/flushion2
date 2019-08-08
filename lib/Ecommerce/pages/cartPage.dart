@@ -66,16 +66,17 @@ class _ShoppingCartState extends State<ShoppingCart> {
     return Scaffold(
 
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.red.shade900,
-        title: Text("Cart"),
+        iconTheme: IconThemeData(color: Colors.deepOrange),
+        elevation: 2.0,
+        backgroundColor: Colors.white,
+        title: Text("Cart",style: TextStyle(color: Colors.deepOrange),),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,color: Colors.deepOrange,),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,color: Colors.deepOrange,),
             onPressed: () {
               return Navigator.popUntil(context, ModalRoute.withName("/"));
             },
@@ -101,7 +102,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 shape: Border.all(style: BorderStyle.none),
                 height: 50.0,
                 onPressed: () {},
-                color: Colors.red.shade900,
+                color: Colors.deepOrange,
                 child: Text("Check out "),
                 textColor: Colors.white,
               ),

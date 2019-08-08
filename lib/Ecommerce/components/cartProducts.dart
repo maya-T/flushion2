@@ -90,7 +90,7 @@ class _CartProductsState extends State<CartProducts> {
                      style: TextStyle(
                        fontSize: 17.0,
                        fontWeight: FontWeight.bold,
-                       color: Colors.red.shade900,
+                       color: Colors.deepOrange,
                      ),
                    ),
                  ),

@@ -18,8 +18,6 @@ class HorizListView extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: imgList.map((item){
-          print("hryyy");
-          print(item['url']);print(item['caption']);
           return Category(url: item['url'],caption: item['caption']);
         }).toList(),
       ),
@@ -40,7 +38,7 @@ class Category extends StatelessWidget {
         width: 100.0,
         child: ListTile(
 
-          title:Container( padding: EdgeInsets.all(5.0),child: Image.asset(url,color: Colors.red.shade900,)),
+          title:Container( padding: EdgeInsets.all(5.0),child: Image.asset(url,color: Colors.deepOrange,)),
           subtitle: Text(caption, textAlign: TextAlign.center,style: TextStyle(fontSize: 11.0),),
 
         ),

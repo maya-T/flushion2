@@ -70,7 +70,7 @@ class Product extends StatelessWidget {
       {Key key,
       @required this.name,
       @required this.picture,
-      @required this.oldPrice,
+      this.oldPrice,
       @required this.price})
       : super(key: key);
   @override
@@ -92,7 +92,7 @@ class Product extends StatelessWidget {
           },
           child: GridTile(
             footer: Container(
-                color: Colors.white70,
+                color: Colors.white,
                 child: ListTile(
                   leading: Text(
                     name,
@@ -101,11 +101,14 @@ class Product extends StatelessWidget {
                   title: Text(
                     "${price.toString()}\$",
                     style: TextStyle(
-                        color: Colors.red.shade900,
+                        color: Colors.deepOrange,
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0),
                   ),
-                  subtitle: Text("${oldPrice.toString()}\$",
+                  trailing:
+                  oldPrice==0?
+                  null
+                      :Text("${oldPrice.toString()}\$",
                       style: TextStyle(
                         fontSize: 10.0,
                         decoration: TextDecoration.lineThrough,

@@ -43,16 +43,20 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.red.shade900,
+        iconTheme: IconThemeData(color: Colors.deepOrange),
+        elevation: 2.0,
+        backgroundColor: Colors.white,
         title: Text("Flushion"),
         actions: <Widget>[
+//          IconButton(
+//            icon: Icon(Icons.search),
+//            onPressed: () {},
+//          ),
           IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.deepOrange,
+              ),
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
@@ -60,9 +64,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                 }));
               }),
           IconButton(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+              color: Colors.deepOrange,
+            ),
             onPressed: () {
-              return Navigator.popUntil(context,ModalRoute.withName("/"));
+              return Navigator.popUntil(context, ModalRoute.withName("/"));
             },
           ),
         ],
@@ -70,11 +77,15 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: ListView(
         children: <Widget>[
           Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(color: Colors.black, blurRadius: 20.0)
+            ]),
             margin: EdgeInsets.all(0.0),
             height: 300.0,
             child: GridTile(
               footer: Container(
-                  color: Colors.white70,
+
+                  color: Colors.white,
                   child: ListTile(
                     contentPadding: EdgeInsets.symmetric(horizontal: 60.0),
                     leading: Text(
@@ -95,7 +106,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         Text(
                           "${widget.price.toString()}\$",
                           style: TextStyle(
-                            color: Colors.red.shade900,
+                            color: Colors.deepOrange,
                             fontWeight: FontWeight.bold,
                             fontSize: 20.0,
                           ),
@@ -118,8 +129,8 @@ class _ProductDetailsState extends State<ProductDetails> {
               children: <Widget>[
                 Expanded(
                     child: DropDown(
-                    elements: ["XS", "S", "M", "L"],
-                    hint: "Size",
+                  elements: ["XS", "S", "M", "L"],
+                  hint: "Size",
                 )),
                 VerticalDivider(),
                 Expanded(
@@ -148,19 +159,19 @@ class _ProductDetailsState extends State<ProductDetails> {
                       height: 40.0,
                       elevation: 1.0,
                       onPressed: () {},
-                      color: Colors.red.shade900,
+                      color: Colors.deepOrange,
                       textColor: Colors.white,
                       child: Text('Buy now')),
                 ),
                 IconButton(
                   icon: Icon(Icons.add_shopping_cart),
                   onPressed: () {},
-                  color: Colors.red.shade900,
+                  color: Colors.deepOrange,
                 ),
                 VerticalDivider(),
                 IconButton(
                   icon: Icon(Icons.favorite),
-                  color: Colors.red.shade900,
+                  color: Colors.deepOrange,
                   onPressed: () {},
                 ),
               ],
@@ -300,7 +311,7 @@ class _SimilarProductsState extends State<SimilarProducts> {
                   },
                   child: GridTile(
                     footer: Container(
-                        color: Colors.white70,
+                        color: Colors.white,
                         child: ListTile(
                           leading: Text(
                             widget.similarProducts[i]['name'],
@@ -309,11 +320,11 @@ class _SimilarProductsState extends State<SimilarProducts> {
                           title: Text(
                             "${widget.similarProducts[i]['price'].toString()}\$",
                             style: TextStyle(
-                                color: Colors.red.shade900,
+                                color: Colors.deepOrange,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14.0),
                           ),
-                          subtitle: Text(
+                          trailing: Text(
                               "${widget.similarProducts[i]['oldPrice'].toString()}\$",
                               style: TextStyle(
                                 fontSize: 10.0,
