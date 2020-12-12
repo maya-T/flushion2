@@ -7,8 +7,6 @@ class CategoryService{
       _firestore.collection("Categories").add({'name':name});
   }
   getCategories(){
-
     return _firestore.collection("Categories").snapshots();
-
   }
 }
